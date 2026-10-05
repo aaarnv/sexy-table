@@ -7,7 +7,7 @@ A TypeScript React table with responsive columns, animated layouts, avatar stack
 Download the archive from the [latest release](https://github.com/aaarnv/sexy-table/releases/latest), then install it in your app:
 
 ```sh
-npm install ./aaarnv-sexy-table-0.2.0.tgz
+npm install ./aaarnv-sexy-table-0.2.1.tgz
 ```
 
 The package is distributed through GitHub releases. To build it yourself, run `npm ci` and `npm pack`.
@@ -47,6 +47,18 @@ npm run dev
 ```
 
 The library lives in `src/`, the demo in `src/demo/`, and installed-package examples in `tests/consumer/`.
+
+To read the implementation, start with [`src/SexyTable.tsx`](src/SexyTable.tsx). It connects the table's rendering, scrolling, and interaction hooks.
+
+| Module                                                                                                          | Responsibility                                                      |
+| --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| [`IssueGroup.tsx`](src/internal/IssueGroup.tsx) and [`IssueRow.tsx`](src/internal/IssueRow.tsx)                 | Group headers, column tooltips, and issue fields                    |
+| [`ResizeHandles.tsx`](src/internal/ResizeHandles.tsx) and [`useTableResize.ts`](src/internal/useTableResize.ts) | Accessible resize controls, pointer gestures, and keyboard sizing   |
+| [`useLayoutGlide.ts`](src/internal/useLayoutGlide.ts)                                                           | Observe responsive breakpoint changes and clean up animations       |
+| [`layoutGeometry.ts`](src/internal/layoutGeometry.ts)                                                           | Measure element positions relative to their animated parents        |
+| [`createLayoutTransition.ts`](src/internal/createLayoutTransition.ts)                                           | Move, reveal, and remove elements during layout transitions         |
+| [`layoutMotion.ts`](src/internal/layoutMotion.ts)                                                               | Breakpoints, animation durations, and stagger delays                |
+| [`SlidingTabs.tsx`](src/SlidingTabs.tsx) and [`useSlidingTabLayout.ts`](src/internal/useSlidingTabLayout.ts)    | Tab rendering, keyboard navigation, and selected-label measurements |
 
 | Command                 | Purpose                                                         |
 | ----------------------- | --------------------------------------------------------------- |

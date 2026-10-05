@@ -25,16 +25,19 @@ export function useTableResize(
   tableRef: RefObject<HTMLDivElement | null>,
   resizable: boolean,
 ) {
-  const [size, setSize] = useState<Partial<Dimensions>>({});
-  const [natural, setNatural] = useState<Dimensions>({ width: 0, height: 0 });
+  const [requestedSize, setRequestedSize] = useState<Partial<Dimensions>>({});
+  const [naturalSize, setNaturalSize] = useState<Dimensions>({
+    width: 0,
+    height: 0,
+  });
   const [dragging, setDragging] = useState<ResizeAxis | null>(null);
-  const pointer = useRef<Gesture | null>(null);
-  const autoWidth = size.width === undefined;
-  const autoHeight = size.height === undefined;
+  const gestureRef = useRef<Gesture | null>(null);
+  const hasAutomaticWidth = requestedSize.width === undefined;
+  const hasAutomaticHeight = requestedSize.height === undefined;
 
   useIsomorphicLayoutEffect(() => {
     if (!resizable) {
-      pointer.current = null;
+      gestureRef.current = null;
       setDragging(null);
     }
   }, [resizable]);
@@ -45,7 +48,7 @@ export function useTableResize(
     if (!resizable || !table || !view) return;
     const parent = table.parentElement;
     const measure = () =>
-      setNatural((previous) => {
+      setNaturalSize((previous) => {
         const parentStyle = parent ? view.getComputedStyle(parent) : null;
         const available =
           parent && parentStyle
@@ -54,8 +57,8 @@ export function useTableResize(
               parseFloat(parentStyle.paddingRight)
             : previous.width;
         const next = {
-          width: autoWidth ? table.offsetWidth : Math.max(0, available),
-          height: autoHeight ? table.offsetHeight : previous.height,
+          width: hasAutomaticWidth ? table.offsetWidth : Math.max(0, available),
+          height: hasAutomaticHeight ? table.offsetHeight : previous.height,
         };
         return next.width === previous.width && next.height === previous.height
           ? previous
@@ -66,45 +69,52 @@ export function useTableResize(
     observer.observe(table);
     if (parent) observer.observe(parent);
     return () => observer.disconnect();
-  }, [tableRef, resizable, autoWidth, autoHeight]);
+  }, [tableRef, resizable, hasAutomaticWidth, hasAutomaticHeight]);
 
-  const minimum = { width: Math.min(320, natural.width || 320), height: 200 };
-  const dimensions = {
-    width: Math.min(size.width ?? natural.width, natural.width),
-    height: size.height ?? natural.height,
+  const minimum = {
+    width: Math.min(320, naturalSize.width || 320),
+    height: 200,
   };
-  const update = (next: Partial<Dimensions>) =>
-    setSize((previous) => ({
-      ...previous,
-      ...(next.width === undefined
-        ? {}
-        : {
-            width: Math.round(
-              Math.min(Math.max(next.width, minimum.width), natural.width),
-            ),
-          }),
-      ...(next.height === undefined
-        ? {}
-        : { height: Math.round(Math.max(next.height, minimum.height)) }),
-    }));
-  const end = (event: PointerEvent<HTMLDivElement>) => {
-    if (pointer.current?.id !== event.pointerId) return;
-    pointer.current = null;
+  const dimensions = {
+    width: Math.min(
+      requestedSize.width ?? naturalSize.width,
+      naturalSize.width,
+    ),
+    height: requestedSize.height ?? naturalSize.height,
+  };
+  function updateSize(next: Partial<Dimensions>) {
+    setRequestedSize((previous) => {
+      const updatedSize = { ...previous };
+      if (next.width !== undefined) {
+        updatedSize.width = Math.round(
+          Math.min(Math.max(next.width, minimum.width), naturalSize.width),
+        );
+      }
+      if (next.height !== undefined) {
+        updatedSize.height = Math.round(Math.max(next.height, minimum.height));
+      }
+      return updatedSize;
+    });
+  }
+
+  const endGesture = (event: PointerEvent<HTMLDivElement>) => {
+    if (gestureRef.current?.id !== event.pointerId) return;
+    gestureRef.current = null;
     setDragging(null);
     if (event.currentTarget.hasPointerCapture(event.pointerId))
       event.currentTarget.releasePointerCapture(event.pointerId);
   };
 
-  function handle(axis: ResizeAxis): ResizeHandleProps {
+  function getHandleProps(axis: ResizeAxis): ResizeHandleProps {
     return {
       "data-dragging": dragging === axis ? "" : undefined,
       onPointerDown(event) {
         const table = tableRef.current;
         const view = table?.ownerDocument.defaultView;
-        if (event.button !== 0 || pointer.current || !table || !view) return;
+        if (event.button !== 0 || gestureRef.current || !table || !view) return;
         event.preventDefault();
         event.currentTarget.setPointerCapture(event.pointerId);
-        pointer.current = {
+        gestureRef.current = {
           id: event.pointerId,
           axis,
           x: event.clientX,
@@ -119,7 +129,7 @@ export function useTableResize(
         setDragging(axis);
       },
       onPointerMove(event) {
-        const start = pointer.current;
+        const start = gestureRef.current;
         if (!start || start.id !== event.pointerId || start.axis !== axis)
           return;
         const next: { width?: number; height?: number } = {};
@@ -129,13 +139,13 @@ export function useTableResize(
             ((event.clientX - start.x) * start.direction) / start.scale;
         if (axis !== "width")
           next.height = start.height + (event.clientY - start.y) / start.scale;
-        update(next);
+        updateSize(next);
       },
-      onPointerUp: end,
-      onPointerCancel: end,
-      onLostPointerCapture: end,
+      onPointerUp: endGesture,
+      onPointerCancel: endGesture,
+      onLostPointerCapture: endGesture,
       onDoubleClick() {
-        setSize((previous) => {
+        setRequestedSize((previous) => {
           const next = { ...previous };
           if (axis !== "height") delete next.width;
           if (axis !== "width") delete next.height;
@@ -157,27 +167,23 @@ export function useTableResize(
           if (event.key === "ArrowUp") step = -16;
           if (event.key === "ArrowDown") step = 16;
         }
-        const next =
-          event.key === "Home"
-            ? minimum[axis]
-            : event.key === "End"
-              ? natural[axis]
-              : step
-                ? dimensions[axis] + step
-                : undefined;
+        let next: number | undefined;
+        if (event.key === "Home") next = minimum[axis];
+        else if (event.key === "End") next = naturalSize[axis];
+        else if (step) next = dimensions[axis] + step;
         if (next === undefined) return;
         event.preventDefault();
-        update(axis === "width" ? { width: next } : { height: next });
+        updateSize(axis === "width" ? { width: next } : { height: next });
       },
     };
   }
   return {
-    size: resizable ? size : {},
+    size: resizable ? requestedSize : {},
     dimensions,
-    natural,
+    natural: naturalSize,
     minimum,
     dragging: resizable ? dragging : null,
     axes,
-    handle,
+    getHandleProps,
   };
 }

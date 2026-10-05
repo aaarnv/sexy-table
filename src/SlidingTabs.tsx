@@ -1,30 +1,14 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import type { KeyboardEvent } from "react";
-import { useIsomorphicLayoutEffect } from "./internal/useIsomorphicLayoutEffect";
+import { useSlidingTabLayout } from "./internal/useSlidingTabLayout";
 import type { SlidingTabsProps } from "./types";
 
-interface LabelGeometry {
-  readonly x: number;
-  readonly width: number;
-}
-interface Geometry extends LabelGeometry {
-  readonly labels: readonly LabelGeometry[];
-}
-
-function sameGeometry(previous: Geometry | null, next: Geometry | null) {
-  if (!previous || !next) return previous === next;
-  return (
-    previous.x === next.x &&
-    previous.width === next.width &&
-    previous.labels.length === next.labels.length &&
-    previous.labels.every((label, index) => {
-      const other = next.labels[index];
-      return other?.x === label.x && other.width === label.width;
-    })
-  );
-}
-
-function nextIndex(key: string, focused: number, count: number, rtl: boolean) {
+function getNextTabIndex(
+  key: string,
+  focused: number,
+  count: number,
+  rtl: boolean,
+) {
   switch (key) {
     case "Home":
       return 0;
@@ -49,41 +33,7 @@ export function SlidingTabs<Value extends string>({
   ...props
 }: SlidingTabsProps<Value>) {
   const root = useRef<HTMLDivElement>(null);
-  const [geometry, setGeometry] = useState<Geometry | null>(null);
-  useIsomorphicLayoutEffect(() => {
-    const element = root.current;
-    const view = element?.ownerDocument.defaultView;
-    if (!element || !view) return;
-    let alive = true;
-    const measure = () => {
-      if (!alive) return;
-      const buttons = [
-        ...element.querySelectorAll<HTMLButtonElement>(".kgt-tab-button"),
-      ];
-      const selected = buttons[items.findIndex((item) => item.value === value)];
-      const labels = buttons.map((button) => {
-        const label = button.querySelector<HTMLElement>(".kgt-tab-label");
-        return {
-          x: button.offsetLeft + (label?.offsetLeft ?? 0),
-          width: label?.offsetWidth ?? 0,
-        };
-      });
-      const next = selected
-        ? { x: selected.offsetLeft, width: selected.offsetWidth, labels }
-        : null;
-      setGeometry((previous) =>
-        sameGeometry(previous, next) ? previous : next,
-      );
-    };
-    measure();
-    const observer = new view.ResizeObserver(measure);
-    observer.observe(element);
-    void element.ownerDocument.fonts.ready.then(measure);
-    return () => {
-      alive = false;
-      observer.disconnect();
-    };
-  }, [value, items]);
+  const geometry = useSlidingTabLayout(root, items, value);
 
   function handleKeyDown(event: KeyboardEvent<HTMLDivElement>) {
     onKeyDown?.(event);
@@ -99,7 +49,7 @@ export function SlidingTabs<Value extends string>({
       event.currentTarget.ownerDocument.defaultView?.getComputedStyle(
         event.currentTarget,
       ).direction === "rtl";
-    const next = nextIndex(event.key, focused, items.length, rtl);
+    const next = getNextTabIndex(event.key, focused, items.length, rtl);
     const item = items[next];
     if (!item) return;
     event.preventDefault();
@@ -129,6 +79,10 @@ export function SlidingTabs<Value extends string>({
       )}
       {items.map((item, index) => {
         const label = geometry?.labels[index];
+        const activeLabelClip =
+          label && geometry
+            ? `inset(0 ${label.x + label.width - geometry.x - geometry.width}px 0 ${geometry.x - label.x}px)`
+            : undefined;
         return (
           <button
             key={item.value}
@@ -148,7 +102,7 @@ export function SlidingTabs<Value extends string>({
                   aria-hidden="true"
                   className="kgt-tab-active-label"
                   style={{
-                    clipPath: `inset(0 ${label.x + label.width - geometry.x - geometry.width}px 0 ${geometry.x - label.x}px)`,
+                    clipPath: activeLabelClip,
                   }}
                 >
                   {item.label}
