@@ -1,0 +1,126 @@
+@font-face {
+  font-family: "ABC Diatype";
+  src: url("/assets/abc-diatype-regular.woff2") format("woff2");
+  font-weight: 400 500;
+  font-style: normal;
+  font-display: swap;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scrollbar-width: none;
+}
+body {
+  margin: 0;
+  font-family: "ABC Diatype", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background: oklch(0.205 0 0);
+  overflow-y: scroll;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+body::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 6px;
+}
+button,
+input {
+  font: inherit;
+}
+button {
+  border: 0;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+}
+button:focus-visible,
+.kgt-table-scroll:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+.demo {
+  --card: oklch(0.205 0 0);
+  --muted: oklch(0.269 0 0);
+  --foreground: oklch(0.985 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --border: oklch(1 0 0 / 0.1);
+  --success: oklch(0.704 0.15 152);
+  --warning: oklch(0.704 0.15 75);
+  --destructive: oklch(0.704 0.191 22.216);
+  --ring: oklch(0.556 0 0);
+  background: var(--card);
+  color: var(--foreground);
+  min-height: 100dvh;
+  width: 100vw;
+  padding: 0 30px 28px;
+}
+.demo.light {
+  --card: oklch(1 0 0);
+  --muted: oklch(0.97 0 0);
+  --foreground: oklch(0.145 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --border: oklch(0.922 0 0);
+  --tooltip-bg: var(--foreground);
+  --tooltip-fg: var(--card);
+  --tooltip-shadow: 0 0 0 transparent;
+  --tooltip-border: transparent;
+  --success: oklch(0.5 0.13 152);
+  --warning: oklch(0.5 0.14 70);
+  --destructive: oklch(0.577 0.245 27.325);
+  --ring: oklch(0.708 0 0);
+}
+.demo-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 52px;
+  font-size: 13px;
+  color: var(--muted-foreground);
+}
+.demo-stage {
+  margin-top: 24px;
+  width: calc(100% - 6px);
+  height: 637px;
+}
+.view-options {
+  margin-left: auto;
+}
+.demo-controls {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--muted-foreground);
+  font-size: 14px;
+}
+.animation-switch {
+  position: relative;
+  width: 32.66px;
+  height: 18.4px;
+  padding: 1px;
+  border-radius: 999px;
+  background: var(--muted);
+}
+.animation-switch[aria-checked="true"] {
+  background: var(--foreground);
+}
+.animation-switch span {
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--foreground);
+  transition: translate 250ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.animation-switch[aria-checked="true"] span {
+  translate: 14.5px 0;
+  background: var(--card);
+}
+@media (prefers-reduced-motion: reduce) {
+  .kgt-tabs *,
+  .animation-switch span {
+    transition: none !important;
+  }
+}

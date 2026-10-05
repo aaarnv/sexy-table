@@ -61,3 +61,27 @@ Verified on the running Vite app in the Codex in-app browser:
 - Production build passed with `npm run build`.
 
 No remaining P0/P1/P2 mismatch was identified in these comparisons and interactions. Browser-native capture softness and GIF sampling cadence remain P3 evidence limitations. The reusable component's tooltips and reduced-motion rules use Base UI and CSS; an OS-level reduced-motion preference change was not exercised in this browser session.
+
+## TypeScript library verification — October 5, 2026
+
+The component is now packaged as `@aaarnv/grouped-table`. The demo imports the library's public entry point. The archive contains ESM and CommonJS implementations, declarations for both, scoped CSS and its declaration, README, and package metadata. It includes no demo data, photos, font files, or root-relative asset requests.
+
+Fresh source and library tabs were measured at 998 × 767 and 390 × 844 CSS viewports after motion settled. All 91 FLIP targets had identical measured positions and dimensions in both comparisons. `docs/library-geometry.json` records those measurements. New captures are `docs/library-preview.png` and `docs/library-mobile.png`. Geometry equality does not imply synchronized animation frames across browsers.
+
+The archive was installed into independent React 19.2 and React 18.3.1 applications. Each passed a production Vite build, strict NodeNext TypeScript checking for ESM and CommonJS imports, CSS import checking with `noUncheckedSideEffectImports`, and server rendering through both entry formats. The consumer fixture and repeatable verification script are checked into `tests/consumer` and `scripts/verify-consumer.mjs`.
+
+Browser verification used the installed archive in another application under `/app/`, with system typography, custom group IDs and labels, optional issue fields, initials instead of photos, and deliberately different global button/SVG/list styling. Verified:
+
+- The forwarded ref resolves to the root DIV; custom data attributes reach it.
+- Add passes the caller's group object; native capture handlers still run.
+- Collapsing removes the group's rows and reopening restores them; `defaultOpen=false` starts collapsed.
+- Controlled toolbar selection works by click and arrow key, with the 250ms pill transition.
+- Light/dark styling updates; the outside button retains its host padding and border.
+- Pointer resizing reaches 640px and releases capture and the overlay. Keyboard resizing crosses 632px, and parent constraints update to 280px without overflowing the host.
+- Explicit RTL direction moves the handle to the left and supports negative horizontal scrolling (−162.5px observed).
+- Unmount/remount works with the installed component.
+- The consumer production build and a fresh demo tab have no browser warning/error logs. Temporary errors from editing hook signatures during development were cleared by reload; they did not reproduce in fresh tabs or the production app.
+
+`docs/library-motion-samples.json` contains 18 real computed-style samples during the installed package's 624 → 640px expansion. Secondary avatar opacity progresses from zero through intermediate values to one, scale settles at one, translation becomes `none`, and `data-gliding` clears. The reference durations and staggering listed above remain unchanged. OS-level reduced-motion preference changes were not exercised in this session.
+
+All checks passed: strict type checking, typed ESLint, Prettier, library/demo builds, four package checks, four existing Sites checks, and both independent consumer builds and SSR checks. `docs/library-consumer.png` shows the packed package running in its independent production consumer.

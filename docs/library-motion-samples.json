@@ -1,0 +1,128 @@
+[
+  {
+    "gliding": true,
+    "ms": 0,
+    "opacity": "0",
+    "scale": "0.75",
+    "translate": "-28px"
+  },
+  {
+    "gliding": true,
+    "ms": 41,
+    "opacity": "0",
+    "scale": "0.75",
+    "translate": "-28px"
+  },
+  {
+    "gliding": true,
+    "ms": 81,
+    "opacity": "0",
+    "scale": "0.75",
+    "translate": "-24.1423px"
+  },
+  {
+    "gliding": true,
+    "ms": 122,
+    "opacity": "0",
+    "scale": "0.75",
+    "translate": "-17.7411px"
+  },
+  {
+    "gliding": true,
+    "ms": 164,
+    "opacity": "0",
+    "scale": "0.75",
+    "translate": "-6.88414px"
+  },
+  {
+    "gliding": true,
+    "ms": 206,
+    "opacity": "0.167982",
+    "scale": "0.791996",
+    "translate": "-3.56385px"
+  },
+  {
+    "gliding": true,
+    "ms": 247,
+    "opacity": "0.484814",
+    "scale": "0.871203",
+    "translate": "-2.06052px"
+  },
+  {
+    "gliding": true,
+    "ms": 289,
+    "opacity": "0.77528",
+    "scale": "0.94382",
+    "translate": "-1.20092px"
+  },
+  {
+    "gliding": true,
+    "ms": 331,
+    "opacity": "0.88125",
+    "scale": "0.970313",
+    "translate": "-0.681007px"
+  },
+  {
+    "gliding": true,
+    "ms": 373,
+    "opacity": "0.931331",
+    "scale": "0.982833",
+    "translate": "-0.356399px"
+  },
+  {
+    "gliding": true,
+    "ms": 415,
+    "opacity": "0.95983",
+    "scale": "0.989957",
+    "translate": "-0.159109px"
+  },
+  {
+    "gliding": true,
+    "ms": 456,
+    "opacity": "0.977374",
+    "scale": "0.994343",
+    "translate": "-0.0494406px"
+  },
+  {
+    "gliding": true,
+    "ms": 498,
+    "opacity": "0.988323",
+    "scale": "0.997081",
+    "translate": "-0.00396305px"
+  },
+  {
+    "gliding": true,
+    "ms": 540,
+    "opacity": "0.994933",
+    "scale": "0.998733",
+    "translate": "none"
+  },
+  {
+    "gliding": true,
+    "ms": 582,
+    "opacity": "0.998531",
+    "scale": "0.999633",
+    "translate": "none"
+  },
+  {
+    "gliding": true,
+    "ms": 623,
+    "opacity": "0.999927",
+    "scale": "0.999982",
+    "translate": "none"
+  },
+  {
+    "gliding": true,
+    "ms": 664,
+    "opacity": "1",
+    "scale": "1",
+    "translate": "none"
+  },
+  {
+    "gliding": false,
+    "ms": 706,
+    "opacity": "1",
+    "scale": "1",
+    "translate": "none"
+  }
+]

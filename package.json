@@ -1,19 +1,75 @@
 {
-  "name": "grouped-table",
-  "version": "0.0.0",
-  "private": true,
+  "name": "@aaarnv/grouped-table",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/prepare-sites-build.mjs",
+    "build": "npm run build:lib && npm run build:demo",
     "preview": "vite preview",
-    "test:sites": "node --test tests/sites-worker.test.mjs"
+    "test:sites": "node --test tests/sites-worker.test.mjs",
+    "build:lib": "tsc -p tsconfig.build.json && vite build --config vite.library.config.ts && node scripts/build-library.mjs",
+    "build:demo": "vite build && node scripts/prepare-sites-build.mjs",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src vite.library.config.ts",
+    "format": "prettier --write src *.json vite*.mjs vite*.ts eslint.config.mjs scripts/build-library.mjs README.md docs/plans/2026-10-05-typescript-library-design.md tests/consumer tests/package.test.mjs scripts/verify-consumer.mjs",
+    "format:check": "prettier --check src *.json vite*.mjs vite*.ts eslint.config.mjs scripts/build-library.mjs README.md docs/plans/2026-10-05-typescript-library-design.md tests/consumer tests/package.test.mjs scripts/verify-consumer.mjs",
+    "test:package": "node --test tests/package.test.mjs",
+    "prepack": "npm run build:lib",
+    "test:consumer": "node scripts/verify-consumer.mjs"
   },
   "dependencies": {
-    "@base-ui/react": "1.8.0",
-    "@vitejs/plugin-react": "5.0.4",
+    "@base-ui/react": "1.8.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "@types/node": "^22.20.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "eslint": "^9.39.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "prettier": "^3.9.9",
+    "rollup": "^4.64.0",
+    "rollup-plugin-dts": "^6.5.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.71.0",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "vite": "6.4.2"
+    "vite": "6.4.2",
+    "@vitejs/plugin-react": "5.0.4"
+  },
+  "description": "Typed React grouped table with responsive columns and interruptible layout animations.",
+  "main": "./dist/lib/index.cjs",
+  "module": "./dist/lib/index.js",
+  "types": "./dist/lib/index.d.ts",
+  "files": [
+    "dist/lib"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/lib/index.d.ts",
+        "default": "./dist/lib/index.js"
+      },
+      "require": {
+        "types": "./dist/lib/index.d.cts",
+        "default": "./dist/lib/index.cjs"
+      }
+    },
+    "./styles.css": {
+      "types": "./dist/lib/styles.d.ts",
+      "default": "./dist/lib/styles.css"
+    },
+    "./package.json": "./package.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaarnv/kobra-grouped-table.git"
+  },
+  "peerDependencies": {
+    "react": "^18.3.0 || ^19.0.0",
+    "react-dom": "^18.3.0 || ^19.0.0"
   }
 }

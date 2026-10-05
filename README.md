@@ -1,51 +1,149 @@
 # Grouped Table
 
-A standalone React recreation of the [Kobra grouped-table preview](https://kobra.systems/components/grouped-table), written independently using the rendered DOM, styles, assets, and observations of its publicly served runtime. No paid component source or registry access was obtained.
+A reusable TypeScript React table based on the [Kobra grouped-table preview](https://kobra.systems/components/grouped-table). Includes responsive columns, interruptible 460ms layout glides, avatar fans, collapsible groups, scrolling, and optional resizing.
 
-![Desktop preview](docs/preview.png)
+![Desktop preview](docs/library-preview.png)
 
-![Recorded responsive transition](docs/motion-proof.gif)
+![Responsive transition](docs/motion-proof.gif)
 
-## Run
+## Install
+
+Download the built `aaarnv-grouped-table-0.1.0.tgz` archive from the [v0.1.0 release](https://github.com/aaarnv/kobra-grouped-table/releases/tag/v0.1.0) and install it in your React app:
 
 ```sh
-npm install
-npm run dev
+npm install ./aaarnv-grouped-table-0.1.0.tgz
 ```
 
-`npm run build` produces the app in `dist/client`. `npm run preview` serves the production build.
+The package is not published to the npm registry. To build an archive from this repository, run `npm ci` followed by `npm pack`. React and React DOM 18.3 or 19 are peer dependencies. Base UI is installed automatically.
 
-## Component
+## Use
 
-```jsx
-import { GroupedTable } from './src/GroupedTable.jsx';
-import { initialGroups } from './src/data.js';
+```tsx
+import { GroupedTable, GroupedTableStatusIcon } from "@aaarnv/grouped-table";
+import type { GroupedTableGroup } from "@aaarnv/grouped-table";
+import "@aaarnv/grouped-table/styles.css";
 
+const groups: readonly GroupedTableGroup[] = [
+  {
+    id: "backlog",
+    label: "Backlog",
+    icon: <GroupedTableStatusIcon status="todo" />,
+    issues: [
+      {
+        id: "issue-1",
+        title: "Ship the new dashboard",
+        priority: "high",
+        pullRequest: { label: "#42", state: "open" },
+        estimate: 3,
+        label: { name: "Feature", color: "#9b75e8" },
+        due: "Oct 12",
+        assignees: [
+          { id: "ada", name: "Ada Lovelace", image: "/my-avatars/ada.jpg" },
+        ],
+      },
+    ],
+  },
+];
+
+export function Issues() {
+  return (
+    <GroupedTable
+      groups={groups}
+      theme="dark"
+      onAdd={(group) => console.log(group.id)}
+    />
+  );
+}
+```
+
+Group and issue IDs must be stable and unique within their respective lists. Labels are arbitrary. An issue only requires `id` and `title`; every other field is optional. Missing or failed avatar images show initials. Groups start expanded unless `defaultOpen` is false. To reset a group's initial open state, give it a new ID.
+
+`GroupedTable` forwards its root div ref and accepts native div props, including event handlers and ARIA attributes. `onAdd` receives the group object. Without a handler, the add button is a no-op. `toolbar` accepts your own React content.
+
+| Prop                        | Default  | Behavior                                            |
+| --------------------------- | -------- | --------------------------------------------------- |
+| `groups`                    | Required | Readonly group data                                 |
+| `theme`                     | `system` | `light`, `dark`, or system preference               |
+| `animated`                  | `true`   | Layout and collapse motion; respects reduced motion |
+| `resizable`                 | `true`   | Pointer and keyboard resize handles                 |
+| `toolbar`                   | —        | Content above the groups                            |
+| `onAdd`                     | —        | Callback for a group's add button                   |
+| `className`, `style`, `ref` | —        | Root customization                                  |
+
+Default size is 100% of the parent width and 637px high. Set `style={{ height: 480 }}` or a CSS class to choose a different initial size. User resizing overrides that initial size until an edge is double-clicked. Arrow keys resize by 16px, Home chooses the minimum, and End restores the available width or original height. Narrow parents can be smaller than the usual 320px width minimum.
+
+The library inherits your font and includes no font files or avatar photos. The demo opts into the reference's font and photos separately. The package exports ESM and CommonJS, declarations for both, and a separate CSS entry marked as a side effect. Import the CSS once in your app's stylesheet entry; for Next.js, use the root layout. Import interactive components from a client component.
+
+## Sliding toolbar
+
+```tsx
+import { useState } from "react";
+import { GroupedTable, SlidingTabs } from "@aaarnv/grouped-table";
+import "@aaarnv/grouped-table/styles.css";
+
+const views = [
+  { value: "overview", label: "Overview" },
+  { value: "activity", label: "Activity" },
+  { value: "issues", label: "Issues" },
+];
+
+export function Project() {
+  const [view, setView] = useState("issues");
+  return (
+    <GroupedTable
+      groups={[]}
+      toolbar={
+        <SlidingTabs
+          items={views}
+          value={view}
+          onValueChange={setView}
+          aria-label="Project view"
+        />
+      }
+    />
+  );
+}
+```
+
+`SlidingTabs` is a controlled button group. It changes selection and animates the pill; the caller decides what content to display. Arrow keys, Home, and End move selection. Item values can be a string union. Empty items or a missing selected value render without a pill. Within a table, the tabs inherit its theme; standalone tabs follow the system preference unless you set `theme`.
+
+## Styling
+
+Classes and theme variables use the `kgt-` prefix. Styles are scoped to the library's elements. Override the variables on a component with a class or typed `style`:
+
+```tsx
 <GroupedTable
-  groups={initialGroups}
-  toolbar={<div>Your toolbar</div>}
-  animated
-  resizable
-  onAdd={status => console.log(status)}
+  groups={groups}
+  style={{ "--kgt-card": "#18181b", "--kgt-success": "#69cda1" }}
 />
 ```
 
-Each group has `status`, `icon`, and `issues`. See `src/data.js` for the schema and the 13 reference issues. The component uses `@base-ui/react` for collapsible panels, scroll areas, and tooltips. Copy `GroupedTable.jsx`, its two hooks, `grouped-table.css`, and the referenced assets together. `SlidingTabs.jsx` implements the demo toolbar. Theme variables are defined in `src/styles.css`.
+Available theme variables: `--kgt-card`, `--kgt-foreground`, `--kgt-muted`, `--kgt-muted-foreground`, `--kgt-border`, `--kgt-success`, `--kgt-warning`, `--kgt-destructive`, `--kgt-ring`, and `--kgt-tooltip-bg`, `--kgt-tooltip-fg`, `--kgt-tooltip-shadow`, `--kgt-tooltip-border`.
 
-- Container queries at 39.5rem and 47.5rem. Narrow rows scroll horizontally.
-- Hierarchical FLIP with the reference's 460ms glide, row and field staggering, independently animated avatar fans, and label/glyph entrance and exit transitions.
-- Interruptible resize transitions retain their current translation. Ordinary resize observations do not finish active animations.
-- Base UI panels animate height for 200ms and remove closed contents after the transition.
-- Sticky group headers and custom overlay scrollbars.
-- Width, height, and corner dragging. Arrow keys resize by 16px; Home selects the minimum, End restores the natural dimension. Double-click an edge or corner to reset it.
-- Reduced-motion support and an Animated switch outside the table.
+Columns respond to the component's width, with container breakpoints at 39.5rem and 47.5rem. Below 39.5rem, rows become inline and can scroll horizontally. Set `dir="rtl"` on the table for right-to-left layout, scrolling, and resize controls.
 
-The tabs change selection while keeping the table visible. Add and View options are demo no-ops, matching the reference. Supply `onAdd` when integrating the component into an application.
+## Develop
 
-## Verification
+```sh
+npm ci
+npm run dev
+```
 
-[Design QA](design-qa.md) records the desktop/mobile comparisons, actual browser interactions, and motion measurements. The GIF above consists of screenshots captured from the running local app. It demonstrates both directions of the responsive transition; it is not a synthetic animation.
+The demo lives in `src/demo`. Public components and models live in `src`; DOM animation and resize hooks live in `src/internal`.
 
-## Assets and attribution
+- `npm run build:lib`: package output in `dist/lib`.
+- `npm run build:demo`: demo and existing Sites worker output.
+- `npm run build`: both builds.
+- `npm run typecheck`, `npm run lint`, `npm run format:check`: strict TypeScript, lint, and formatting.
+- `npm run test:package`: ESM/CommonJS, SSR, and distribution checks after a library build.
+- `npm run test:consumer`: pack and build independent apps against React 18 and 19, checking both ESM and CommonJS declarations.
+- `npm run test:sites`: existing Sites worker checks.
+- `npm pack`: build and pack the library, excluding demo assets and source.
 
-The demo uses locally captured SVG marks, the ABC Diatype regular font, and sample avatar photos loaded by the reference. These assets retain their owners' rights and are not relicensed by this repository. ABC Diatype is a commercial font; use a licensed font before distributing the demo. Avatar photos come from Pravatar and Kobra's preview image. No Kobra subscription, paid source files, registry access, or backend is included.
+[Design QA](design-qa.md) records the reference comparison and library verification. The motion GIF contains frames from the running app.
+
+## Attribution
+
+This implementation was written from the reference's publicly rendered DOM, styles, assets, and observed runtime. No paid component source or registry access was obtained. SVG marks include Tabler icons and simple status/priority geometries observed in the preview. Reference assets retain their owners' rights.
+
+The **demo only** includes captured ABC Diatype font and avatar photos from Pravatar and Kobra's preview. Those assets are excluded from the library archive and are not relicensed by this repository. Use your own licensed font and photos when distributing the demo.

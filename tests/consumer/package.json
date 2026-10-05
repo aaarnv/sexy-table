@@ -1,0 +1,20 @@
+{
+  "name": "grouped-table-consumer-proof",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 4174 --strictPort",
+    "build": "tsc --noEmit && vite build",
+    "test": "node ssr.mjs"
+  },
+  "dependencies": {
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "5.9.3",
+    "vite": "6.4.2"
+  }
+}

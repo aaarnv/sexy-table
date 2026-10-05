@@ -1,0 +1,41 @@
+body {
+  margin: 24px;
+  background: #202124;
+  color: #f6f6f6;
+  font-family: system-ui, sans-serif;
+}
+button {
+  padding: 20px;
+  margin: 8px;
+  background: #ffcc00;
+  color: #000;
+  border: 3px solid #d33;
+  font-size: 18px;
+}
+svg {
+  width: 100px;
+  height: 100px;
+}
+ul {
+  padding: 40px;
+  margin: 24px;
+}
+.groups {
+  border: 12px solid red;
+}
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+}
+.controls button {
+  padding: 8px;
+  font-size: 12px;
+}
+output {
+  display: block;
+  margin: 16px 0;
+}
+#consumer-parent {
+  width: 100%;
+  margin-top: 16px;
+}
