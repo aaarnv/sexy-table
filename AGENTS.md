@@ -1,15 +1,19 @@
-# Prototype Instructions
+# Sexy Table
 
-Run the local server yourself and open the preview in the browser available to this environment. Do not give the user server-start instructions when you can run it.
+The repository is `aaarnv/sexy-table`, the package is `@aaarnv/sexy-table`, and public component and model types use the `SexyTable` prefix.
 
-Before making substantial visual changes, use the Product Design plugin's `get-context` skill when the visual source is unclear or no longer matches the current goal. When the user gives durable prototype-specific design feedback, preferences, or decisions, record them in `AGENTS.md`.
+## Component
 
-When implementing from a selected generated mock, treat that image as the source of truth for layout, component anatomy, density, spacing, color, typography, visible content, and hierarchy.
+- Keep the library independent of demo data, fonts, photos, routes, and global styles. Use scoped CSS, inline icons, caller-owned data, strict TypeScript, and clean exports.
+- Preserve the [Kobra grouped-table reference](https://kobra.systems/components/grouped-table): responsive columns, staggered 460ms layout glides, avatar fans, label transitions, and Base UI collapse behavior.
+- Keep the demo's add and view-options actions as no-ops. The library's `onAdd` callback belongs to the caller.
+- Keep attribution and existing CSS variables. Record durable user decisions here.
+- Before substantial visual changes, use the Product Design context skill if the visual source is unclear. For a selected mock, treat that mock as the visual target.
 
-Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts/prepare-sites-build.mjs`, and `tests/sites-worker.test.mjs` intact so the same local prototype can be handed to Sites. Before a Sites handoff, run `npm run build` and `npm run test:sites`; the build must leave `dist/client/index.html`, `dist/server/index.js`, and `dist/.openai/hosting.json`.
+## Verification
 
-The user requires a faithful recreation of the Kobra grouped table, including its animations. Treat the live reference as the target: preserve its responsive columns, staggered 460ms glides, avatar fans, label enter/exit motion, and Base UI collapse behavior. Keep the source demo's add and view-options actions as no-ops; do not invent extra menus or forms. Verify motion as well as settled screenshots before claiming fidelity.
+Run the server and drive the browser yourself. Verify motion and settled layout for visual changes. For package changes, prove the packed archive in an independent consuming application. Keep the repeatable consumer checks in `tests/consumer` and `scripts/verify-consumer.mjs`.
 
-The user requires an exportable TypeScript React library with clean code. Keep package exports, types, scoped styles, inline icons, and caller-owned data independent from the demo. Preserve the observed layout and motion when changing packaging. Prove the packed package in a separate consuming application, not just through source imports.
+## Demo hosting
 
-The project is branded Sexy Table. The GitHub repo is `aaarnv/sexy-table`, the package is `@aaarnv/sexy-table`, and the component and model types use the `SexyTable` prefix. Preserve the reference attribution and existing styling variables.
+Build UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts/prepare-sites-build.mjs`, and `tests/sites-worker.test.mjs` intact. Before a Sites handoff, run `npm run build` and `npm run test:sites`. The build must leave `dist/client/index.html`, `dist/server/index.js`, and `dist/.openai/hosting.json`.

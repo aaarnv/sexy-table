@@ -11,8 +11,8 @@
     "build:demo": "vite build && node scripts/prepare-sites-build.mjs",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src vite.library.config.ts",
-    "format": "prettier --write src *.json vite*.mjs vite*.ts eslint.config.mjs scripts/build-library.mjs README.md docs/plans/2026-10-05-typescript-library-design.md tests/consumer tests/package.test.mjs scripts/verify-consumer.mjs",
-    "format:check": "prettier --check src *.json vite*.mjs vite*.ts eslint.config.mjs scripts/build-library.mjs README.md docs/plans/2026-10-05-typescript-library-design.md tests/consumer tests/package.test.mjs scripts/verify-consumer.mjs",
+    "format": "prettier --write src *.json vite*.mjs vite*.ts eslint.config.mjs scripts/build-library.mjs README.md AGENTS.md docs/*.md tests/consumer tests/package.test.mjs scripts/verify-consumer.mjs",
+    "format:check": "prettier --check src *.json vite*.mjs vite*.ts eslint.config.mjs scripts/build-library.mjs README.md AGENTS.md docs/*.md tests/consumer tests/package.test.mjs scripts/verify-consumer.mjs",
     "test:package": "node --test tests/package.test.mjs",
     "prepack": "npm run build:lib",
     "test:consumer": "node scripts/verify-consumer.mjs"
