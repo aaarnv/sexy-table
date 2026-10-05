@@ -1,0 +1,510 @@
+{
+  "source": [
+    {
+      "elapsedMs": 0,
+      "titleTranslate": "26.0969px",
+      "pullTranslate": "50.4512px",
+      "fanOpacity": "0.931551",
+      "fanScale": "0.982888"
+    },
+    {
+      "elapsedMs": 13,
+      "titleTranslate": "24.8455px",
+      "pullTranslate": "48.0319px",
+      "fanOpacity": "0.843888",
+      "fanScale": "0.960972"
+    },
+    {
+      "elapsedMs": 21,
+      "titleTranslate": "23.4921px",
+      "pullTranslate": "45.4154px",
+      "fanOpacity": "0.741997",
+      "fanScale": "0.935499"
+    },
+    {
+      "elapsedMs": 31,
+      "titleTranslate": "22.1191px",
+      "pullTranslate": "42.7613px",
+      "fanOpacity": "0.629343",
+      "fanScale": "0.907336"
+    },
+    {
+      "elapsedMs": 39,
+      "titleTranslate": "20.634px",
+      "pullTranslate": "39.8902px",
+      "fanOpacity": "0.499612",
+      "fanScale": "0.874903"
+    },
+    {
+      "elapsedMs": 47,
+      "titleTranslate": "19.1778px",
+      "pullTranslate": "37.075px",
+      "fanOpacity": "0.38273",
+      "fanScale": "0.845683"
+    },
+    {
+      "elapsedMs": 56,
+      "titleTranslate": "17.4207px",
+      "pullTranslate": "33.6781px",
+      "fanOpacity": "0.282728",
+      "fanScale": "0.820682"
+    },
+    {
+      "elapsedMs": 66,
+      "titleTranslate": "13.2412px",
+      "pullTranslate": "25.5982px",
+      "fanOpacity": "0.165736",
+      "fanScale": "0.791434"
+    },
+    {
+      "elapsedMs": 75,
+      "titleTranslate": "11.3176px",
+      "pullTranslate": "21.8794px",
+      "fanOpacity": "0.13488",
+      "fanScale": "0.78372"
+    },
+    {
+      "elapsedMs": 83,
+      "titleTranslate": "9.40554px",
+      "pullTranslate": "18.183px",
+      "fanOpacity": "0.10875",
+      "fanScale": "0.777188"
+    },
+    {
+      "elapsedMs": 92,
+      "titleTranslate": "7.91626px",
+      "pullTranslate": "15.3039px",
+      "fanOpacity": "0.0893137",
+      "fanScale": "0.772328"
+    },
+    {
+      "elapsedMs": 100,
+      "titleTranslate": "6.74946px",
+      "pullTranslate": "13.0482px",
+      "fanOpacity": "0.0738663",
+      "fanScale": "0.768467"
+    },
+    {
+      "elapsedMs": 108,
+      "titleTranslate": "6.74946px",
+      "pullTranslate": "13.0482px",
+      "fanOpacity": "0.0738663",
+      "fanScale": "0.768467"
+    },
+    {
+      "elapsedMs": 115,
+      "titleTranslate": "5.88154px",
+      "pullTranslate": "11.3703px",
+      "fanOpacity": "0.0620454",
+      "fanScale": "0.765511"
+    },
+    {
+      "elapsedMs": 123,
+      "titleTranslate": "5.06225px",
+      "pullTranslate": "9.78647px",
+      "fanOpacity": "0.0505915",
+      "fanScale": "0.762648"
+    },
+    {
+      "elapsedMs": 131,
+      "titleTranslate": "4.45222px",
+      "pullTranslate": "8.60714px",
+      "fanOpacity": "0.0419135",
+      "fanScale": "0.760478"
+    },
+    {
+      "elapsedMs": 139,
+      "titleTranslate": "3.92856px",
+      "pullTranslate": "7.59478px",
+      "fanOpacity": "0.0344219",
+      "fanScale": "0.758605"
+    },
+    {
+      "elapsedMs": 147,
+      "titleTranslate": "3.489px",
+      "pullTranslate": "6.74502px",
+      "fanOpacity": "0.0281651",
+      "fanScale": "0.757041"
+    },
+    {
+      "elapsedMs": 155,
+      "titleTranslate": "3.10631px",
+      "pullTranslate": "6.0052px",
+      "fanOpacity": "0.0228015",
+      "fanScale": "0.7557"
+    },
+    {
+      "elapsedMs": 162,
+      "titleTranslate": "2.77764px",
+      "pullTranslate": "5.3698px",
+      "fanOpacity": "0.0183122",
+      "fanScale": "0.754578"
+    },
+    {
+      "elapsedMs": 170,
+      "titleTranslate": "2.48923px",
+      "pullTranslate": "4.81225px",
+      "fanOpacity": "0.0145125",
+      "fanScale": "0.753628"
+    },
+    {
+      "elapsedMs": 178,
+      "titleTranslate": "2.24303px",
+      "pullTranslate": "4.33628px",
+      "fanOpacity": "0.0114153",
+      "fanScale": "0.752854"
+    },
+    {
+      "elapsedMs": 186,
+      "titleTranslate": "2.02844px",
+      "pullTranslate": "3.92143px",
+      "fanOpacity": "0.00886323",
+      "fanScale": "0.752216"
+    },
+    {
+      "elapsedMs": 194,
+      "titleTranslate": "1.80056px",
+      "pullTranslate": "3.48088px",
+      "fanOpacity": "0.00634985",
+      "fanScale": "0.751587"
+    },
+    {
+      "elapsedMs": 202,
+      "titleTranslate": "1.61926px",
+      "pullTranslate": "3.13039px",
+      "fanOpacity": "0.00453556",
+      "fanScale": "0.751134"
+    },
+    {
+      "elapsedMs": 210,
+      "titleTranslate": "1.45596px",
+      "pullTranslate": "2.81469px",
+      "fanOpacity": "0.00307912",
+      "fanScale": "0.75077"
+    },
+    {
+      "elapsedMs": 219,
+      "titleTranslate": "1.31861px",
+      "pullTranslate": "2.54917px",
+      "fanOpacity": "0.00201471",
+      "fanScale": "0.750504"
+    },
+    {
+      "elapsedMs": 226,
+      "titleTranslate": "1.18715px",
+      "pullTranslate": "2.29503px",
+      "fanOpacity": "0.00116338",
+      "fanScale": "0.750291"
+    },
+    {
+      "elapsedMs": 235,
+      "titleTranslate": "1.05222px",
+      "pullTranslate": "2.03418px",
+      "fanOpacity": "0.000497332",
+      "fanScale": "0.750124"
+    },
+    {
+      "elapsedMs": 243,
+      "titleTranslate": "0.942177px",
+      "pullTranslate": "1.82144px",
+      "fanOpacity": "0.000144323",
+      "fanScale": "0.750036"
+    },
+    {
+      "elapsedMs": 256,
+      "titleTranslate": "0.84205px",
+      "pullTranslate": "1.62787px",
+      "fanOpacity": "4.1873e-06",
+      "fanScale": "0.750001"
+    },
+    {
+      "elapsedMs": 263,
+      "titleTranslate": "0.749825px",
+      "pullTranslate": "1.44958px",
+      "fanOpacity": "0",
+      "fanScale": "0.75"
+    },
+    {
+      "elapsedMs": 271,
+      "titleTranslate": "0.666853px",
+      "pullTranslate": "1.28918px",
+      "fanOpacity": "0",
+      "fanScale": "0.75"
+    },
+    {
+      "elapsedMs": 278,
+      "titleTranslate": "0.591254px",
+      "pullTranslate": "1.14303px",
+      "fanOpacity": "0",
+      "fanScale": "0.75"
+    },
+    {
+      "elapsedMs": 286,
+      "titleTranslate": "0.523973px",
+      "pullTranslate": "1.01296px",
+      "fanOpacity": "0",
+      "fanScale": "0.75"
+    },
+    {
+      "elapsedMs": 295,
+      "titleTranslate": "0.458254px",
+      "pullTranslate": "0.885909px",
+      "fanOpacity": "0",
+      "fanScale": "0.75"
+    }
+  ],
+  "local": [
+    {
+      "elapsedMs": 0,
+      "titleTranslate": "23.9472px",
+      "pullTranslate": "46.3009px",
+      "fanOpacity": "1",
+      "fanScale": "1"
+    },
+    {
+      "elapsedMs": 20,
+      "titleTranslate": "22.9556px",
+      "pullTranslate": "44.3837px",
+      "fanOpacity": "0.925105",
+      "fanScale": "0.981276"
+    },
+    {
+      "elapsedMs": 30,
+      "titleTranslate": "21.8848px",
+      "pullTranslate": "42.3134px",
+      "fanOpacity": "0.839826",
+      "fanScale": "0.959957"
+    },
+    {
+      "elapsedMs": 42,
+      "titleTranslate": "19.5309px",
+      "pullTranslate": "37.7622px",
+      "fanOpacity": "0.629681",
+      "fanScale": "0.90742"
+    },
+    {
+      "elapsedMs": 53,
+      "titleTranslate": "18.3349px",
+      "pullTranslate": "35.4498px",
+      "fanOpacity": "0.511333",
+      "fanScale": "0.877833"
+    },
+    {
+      "elapsedMs": 62,
+      "titleTranslate": "16.9348px",
+      "pullTranslate": "32.7428px",
+      "fanOpacity": "0.383059",
+      "fanScale": "0.845765"
+    },
+    {
+      "elapsedMs": 74,
+      "titleTranslate": "13.5219px",
+      "pullTranslate": "26.144px",
+      "fanOpacity": "0.210729",
+      "fanScale": "0.802682"
+    },
+    {
+      "elapsedMs": 86,
+      "titleTranslate": "11.6947px",
+      "pullTranslate": "22.6113px",
+      "fanOpacity": "0.165839",
+      "fanScale": "0.79146"
+    },
+    {
+      "elapsedMs": 97,
+      "titleTranslate": "9.89302px",
+      "pullTranslate": "19.1277px",
+      "fanOpacity": "0.133272",
+      "fanScale": "0.783318"
+    },
+    {
+      "elapsedMs": 108,
+      "titleTranslate": "7.01985px",
+      "pullTranslate": "13.5726px",
+      "fanOpacity": "0.0897751",
+      "fanScale": "0.772444"
+    },
+    {
+      "elapsedMs": 120,
+      "titleTranslate": "5.99438px",
+      "pullTranslate": "11.5899px",
+      "fanOpacity": "0.0744104",
+      "fanScale": "0.768603"
+    },
+    {
+      "elapsedMs": 130,
+      "titleTranslate": "5.14985px",
+      "pullTranslate": "9.95703px",
+      "fanOpacity": "0.0613795",
+      "fanScale": "0.765345"
+    },
+    {
+      "elapsedMs": 139,
+      "titleTranslate": "4.52157px",
+      "pullTranslate": "8.74227px",
+      "fanOpacity": "0.0514311",
+      "fanScale": "0.762858"
+    },
+    {
+      "elapsedMs": 149,
+      "titleTranslate": "3.96208px",
+      "pullTranslate": "7.66051px",
+      "fanOpacity": "0.0424238",
+      "fanScale": "0.760606"
+    },
+    {
+      "elapsedMs": 158,
+      "titleTranslate": "3.46941px",
+      "pullTranslate": "6.70795px",
+      "fanOpacity": "0.0344407",
+      "fanScale": "0.75861"
+    },
+    {
+      "elapsedMs": 166,
+      "titleTranslate": "3.11606px",
+      "pullTranslate": "6.02477px",
+      "fanOpacity": "0.0287403",
+      "fanScale": "0.757185"
+    },
+    {
+      "elapsedMs": 176,
+      "titleTranslate": "2.74695px",
+      "pullTranslate": "5.31111px",
+      "fanOpacity": "0.0228738",
+      "fanScale": "0.755718"
+    },
+    {
+      "elapsedMs": 184,
+      "titleTranslate": "2.45293px",
+      "pullTranslate": "4.74264px",
+      "fanOpacity": "0.0183237",
+      "fanScale": "0.754581"
+    },
+    {
+      "elapsedMs": 192,
+      "titleTranslate": "2.19823px",
+      "pullTranslate": "4.25018px",
+      "fanOpacity": "0.0145221",
+      "fanScale": "0.753631"
+    },
+    {
+      "elapsedMs": 200,
+      "titleTranslate": "1.97313px",
+      "pullTranslate": "3.81496px",
+      "fanOpacity": "0.0113171",
+      "fanScale": "0.752829"
+    },
+    {
+      "elapsedMs": 209,
+      "titleTranslate": "1.77298px",
+      "pullTranslate": "3.42798px",
+      "fanOpacity": "0.00863215",
+      "fanScale": "0.752158"
+    },
+    {
+      "elapsedMs": 217,
+      "titleTranslate": "1.59209px",
+      "pullTranslate": "3.07823px",
+      "fanOpacity": "0.00637964",
+      "fanScale": "0.751595"
+    },
+    {
+      "elapsedMs": 225,
+      "titleTranslate": "1.42995px",
+      "pullTranslate": "2.76475px",
+      "fanOpacity": "0.00454007",
+      "fanScale": "0.751135"
+    },
+    {
+      "elapsedMs": 233,
+      "titleTranslate": "1.28574px",
+      "pullTranslate": "2.48593px",
+      "fanOpacity": "0.0030827",
+      "fanScale": "0.750771"
+    },
+    {
+      "elapsedMs": 241,
+      "titleTranslate": "1.15547px",
+      "pullTranslate": "2.23405px",
+      "fanOpacity": "0.00194528",
+      "fanScale": "0.750486"
+    },
+    {
+      "elapsedMs": 251,
+      "titleTranslate": "1.03749px",
+      "pullTranslate": "2.00594px",
+      "fanOpacity": "0.00109521",
+      "fanScale": "0.750274"
+    },
+    {
+      "elapsedMs": 259,
+      "titleTranslate": "0.939077px",
+      "pullTranslate": "1.81567px",
+      "fanOpacity": "0.000544728",
+      "fanScale": "0.750136"
+    },
+    {
+      "elapsedMs": 267,
+      "titleTranslate": "0.842135px",
+      "pullTranslate": "1.62823px",
+      "fanOpacity": "0.000172691",
+      "fanScale": "0.750043"
+    },
+    {
+      "elapsedMs": 280,
+      "titleTranslate": "0.663105px",
+      "pullTranslate": "1.28209px",
+      "fanOpacity": "0",
+      "fanScale": "0.75"
+    },
+    {
+      "elapsedMs": 289,
+      "titleTranslate": "0.59483px",
+      "pullTranslate": "1.15008px",
+      "fanOpacity": "0",
+      "fanScale": "0.75"
+    },
+    {
+      "elapsedMs": 297,
+      "titleTranslate": "0.521385px",
+      "pullTranslate": "1.00808px",
+      "fanOpacity": "0",
+      "fanScale": "0.75"
+    },
+    {
+      "elapsedMs": 305,
+      "titleTranslate": "0.463441px",
+      "pullTranslate": "0.896043px",
+      "fanOpacity": "0",
+      "fanScale": "0.75"
+    },
+    {
+      "elapsedMs": 313,
+      "titleTranslate": "0.405341px",
+      "pullTranslate": "0.78371px",
+      "fanOpacity": "0",
+      "fanScale": "0.75"
+    },
+    {
+      "elapsedMs": 322,
+      "titleTranslate": "0.355044px",
+      "pullTranslate": "0.686463px",
+      "fanOpacity": "0",
+      "fanScale": "0.75"
+    },
+    {
+      "elapsedMs": 330,
+      "titleTranslate": "0.309359px",
+      "pullTranslate": "0.598133px",
+      "fanOpacity": "0",
+      "fanScale": "0.75"
+    },
+    {
+      "elapsedMs": 339,
+      "titleTranslate": "0.271753px",
+      "pullTranslate": "0.525423px",
+      "fanOpacity": "0",
+      "fanScale": "0.75"
+    }
+  ]
+}
