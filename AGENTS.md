@@ -9,7 +9,7 @@ The repository is `aaarnv/sexy-table`, the package is `@aaarnv/sexy-table`, and 
 - Keep the demo's add and view-options actions as no-ops. The library's `onAdd` callback belongs to the caller.
 - Keep attribution and existing CSS variables. Record durable user decisions here.
 - Keep the implementation readable: give rendering, measurements, and interaction logic clear module boundaries; use descriptive names and explain only non-obvious behavior.
-- Before substantial visual changes, use the Product Design context skill if the visual source is unclear. For a selected mock, treat that mock as the visual target.
+- Keep tracked documentation limited to the README, API reference, and repository instructions. Keep plans, audits, and verification reports outside the repository.
 
 ## Verification
 
