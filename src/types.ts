@@ -1,63 +1,61 @@
 import type { ComponentPropsWithoutRef, CSSProperties, ReactNode } from "react";
 
-export type GroupedTableTheme = "light" | "dark" | "system";
-export type GroupedTablePriority =
-  "none" | "low" | "medium" | "high" | "urgent";
-export type GroupedTablePullRequestState =
-  "open" | "draft" | "closed" | "merged";
-export type GroupedTableStatus = "in-review" | "in-progress" | "todo" | "done";
+export type SexyTableTheme = "light" | "dark" | "system";
+export type SexyTablePriority = "none" | "low" | "medium" | "high" | "urgent";
+export type SexyTablePullRequestState = "open" | "draft" | "closed" | "merged";
+export type SexyTableStatus = "in-review" | "in-progress" | "todo" | "done";
 
-export interface GroupedTableAssignee {
+export interface SexyTableAssignee {
   readonly id: string;
   readonly name: string;
   readonly image?: string;
 }
 
-export interface GroupedTablePullRequest {
+export interface SexyTablePullRequest {
   readonly label: string;
-  readonly state: GroupedTablePullRequestState;
+  readonly state: SexyTablePullRequestState;
 }
 
-export interface GroupedTableLabel {
+export interface SexyTableLabel {
   readonly name: string;
   readonly color?: string;
 }
 
-export interface GroupedTableIssue {
+export interface SexyTableIssue {
   readonly id: string;
   readonly title: string;
-  readonly priority?: GroupedTablePriority;
-  readonly pullRequest?: GroupedTablePullRequest;
+  readonly priority?: SexyTablePriority;
+  readonly pullRequest?: SexyTablePullRequest;
   readonly estimate?: number;
-  readonly label?: GroupedTableLabel;
+  readonly label?: SexyTableLabel;
   readonly due?: string;
-  readonly assignees?: readonly GroupedTableAssignee[];
+  readonly assignees?: readonly SexyTableAssignee[];
 }
 
-export interface GroupedTableGroup {
+export interface SexyTableGroup {
   readonly id: string;
   readonly label: string;
   readonly icon?: ReactNode;
-  readonly issues: readonly GroupedTableIssue[];
+  readonly issues: readonly SexyTableIssue[];
   readonly defaultOpen?: boolean;
 }
 
-export type GroupedTableStyle = CSSProperties & {
+export type SexyTableStyle = CSSProperties & {
   readonly [variable: `--kgt-${string}`]: string | number | undefined;
 };
 
-export interface GroupedTableProps extends Omit<
+export interface SexyTableProps extends Omit<
   ComponentPropsWithoutRef<"div">,
   "children" | "style" | "dir"
 > {
-  readonly groups: readonly GroupedTableGroup[];
+  readonly groups: readonly SexyTableGroup[];
   readonly dir?: "ltr" | "rtl";
   readonly toolbar?: ReactNode;
-  readonly theme?: GroupedTableTheme;
+  readonly theme?: SexyTableTheme;
   readonly animated?: boolean;
   readonly resizable?: boolean;
-  readonly onAdd?: (group: GroupedTableGroup) => void;
-  readonly style?: GroupedTableStyle;
+  readonly onAdd?: (group: SexyTableGroup) => void;
+  readonly style?: SexyTableStyle;
 }
 
 export interface SlidingTab<Value extends string = string> {
@@ -72,6 +70,6 @@ export interface SlidingTabsProps<Value extends string = string> extends Omit<
   readonly items: readonly SlidingTab<Value>[];
   readonly value: Value;
   readonly onValueChange: (value: Value) => void;
-  readonly theme?: GroupedTableTheme;
-  readonly style?: GroupedTableStyle;
+  readonly theme?: SexyTableTheme;
+  readonly style?: SexyTableStyle;
 }

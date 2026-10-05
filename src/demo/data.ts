@@ -1,12 +1,12 @@
 import { createElement } from "react";
 import type {
-  GroupedTableAssignee,
-  GroupedTableGroup,
-  GroupedTableIssue,
-  GroupedTablePriority,
-  GroupedTablePullRequestState,
+  SexyTableAssignee,
+  SexyTableGroup,
+  SexyTableIssue,
+  SexyTablePriority,
+  SexyTablePullRequestState,
 } from "../types";
-import { GroupedTableStatusIcon } from "../GroupedTableStatusIcon";
+import { SexyTableStatusIcon } from "../SexyTableStatusIcon";
 
 const people = {
   Maya: { id: "maya", name: "Maya Chen", image: "/assets/avatar-5.jpg" },
@@ -20,7 +20,7 @@ const people = {
   Elena: { id: "elena", name: "Elena Rossi", image: "/assets/avatar-26.jpg" },
   Tom: { id: "tom", name: "Tom Okafor", image: "/assets/avatar-60.jpg" },
   Sam: { id: "sam", name: "Sam Whitaker", image: "/assets/avatar-59.jpg" },
-} satisfies Record<string, GroupedTableAssignee>;
+} satisfies Record<string, SexyTableAssignee>;
 type PersonName = keyof typeof people;
 const labelColors: Record<string, string> = {
   Performance: "oklch(.65 .16 50)",
@@ -33,13 +33,13 @@ const labelColors: Record<string, string> = {
 function issue(
   number: number,
   title: string,
-  priority: GroupedTablePriority,
-  state: GroupedTablePullRequestState,
+  priority: SexyTablePriority,
+  state: SexyTablePullRequestState,
   estimate: number,
   label: string,
   due: string,
   assignees: readonly PersonName[],
-): GroupedTableIssue {
+): SexyTableIssue {
   return {
     id: `issue-${number}`,
     title,
@@ -51,11 +51,11 @@ function issue(
     assignees: assignees.map((name) => people[name]),
   };
 }
-export const initialGroups: readonly GroupedTableGroup[] = [
+export const initialGroups: readonly SexyTableGroup[] = [
   {
     id: "in-review",
     label: "In Review",
-    icon: createElement(GroupedTableStatusIcon, { status: "in-review" }),
+    icon: createElement(SexyTableStatusIcon, { status: "in-review" }),
     issues: [
       issue(
         1184,
@@ -92,7 +92,7 @@ export const initialGroups: readonly GroupedTableGroup[] = [
   {
     id: "in-progress",
     label: "In Progress",
-    icon: createElement(GroupedTableStatusIcon, { status: "in-progress" }),
+    icon: createElement(SexyTableStatusIcon, { status: "in-progress" }),
     issues: [
       issue(
         1168,
@@ -129,7 +129,7 @@ export const initialGroups: readonly GroupedTableGroup[] = [
   {
     id: "todo",
     label: "Todo",
-    icon: createElement(GroupedTableStatusIcon, { status: "todo" }),
+    icon: createElement(SexyTableStatusIcon, { status: "todo" }),
     issues: [
       issue(
         1150,
@@ -176,7 +176,7 @@ export const initialGroups: readonly GroupedTableGroup[] = [
   {
     id: "done",
     label: "Done",
-    icon: createElement(GroupedTableStatusIcon, { status: "done" }),
+    icon: createElement(SexyTableStatusIcon, { status: "done" }),
     issues: [
       issue(
         1129,

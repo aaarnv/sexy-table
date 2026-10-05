@@ -1,11 +1,11 @@
 import {
-  GroupedTable,
-  GroupedTableStatusIcon,
+  SexyTable,
+  SexyTableStatusIcon,
   SlidingTabs,
-} from "@aaarnv/grouped-table";
-import type { GroupedTableGroup, SlidingTab } from "@aaarnv/grouped-table";
-export const components = { GroupedTable, GroupedTableStatusIcon, SlidingTabs };
-export const groups: readonly GroupedTableGroup[] = [
+} from "@aaarnv/sexy-table";
+import type { SexyTableGroup, SlidingTab } from "@aaarnv/sexy-table";
+export const components = { SexyTable, SexyTableStatusIcon, SlidingTabs };
+export const groups: readonly SexyTableGroup[] = [
   { id: "id", label: "Custom", issues: [{ id: "row", title: "Minimal" }] },
 ];
 export const tabs: readonly SlidingTab<"first" | "second">[] = [

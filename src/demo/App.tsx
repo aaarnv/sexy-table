@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { GroupedTable, SlidingTabs } from "../index";
+import { SexyTable, SlidingTabs } from "../index";
 import { DemoIcon } from "./DemoIcon";
 import "../grouped-table.css";
 import { initialGroups } from "./data";
@@ -16,7 +16,7 @@ export function App() {
   return (
     <main className={`demo ${light ? "light" : ""}`}>
       <header className="demo-header">
-        <span>Grouped Table</span>
+        <span>Sexy Table</span>
         <button
           type="button"
           className="icon-button"
@@ -27,7 +27,7 @@ export function App() {
         </button>
       </header>
       <div className="demo-stage">
-        <GroupedTable
+        <SexyTable
           groups={initialGroups}
           theme={light ? "light" : "dark"}
           animated={animated}

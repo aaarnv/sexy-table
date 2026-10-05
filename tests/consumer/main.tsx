@@ -1,27 +1,27 @@
 import { createElement, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
-  GroupedTable,
-  GroupedTableStatusIcon,
+  SexyTable,
+  SexyTableStatusIcon,
   SlidingTabs,
-} from "@aaarnv/grouped-table";
+} from "@aaarnv/sexy-table";
 import type {
-  GroupedTableGroup,
-  GroupedTableTheme,
+  SexyTableGroup,
+  SexyTableTheme,
   SlidingTab,
-} from "@aaarnv/grouped-table";
-import "@aaarnv/grouped-table/styles.css";
+} from "@aaarnv/sexy-table";
+import "@aaarnv/sexy-table/styles.css";
 
 type View = "board" | "requests";
 const items: readonly SlidingTab<View>[] = [
   { value: "board", label: "Board" },
   { value: "requests", label: "Requests" },
 ];
-const groups: readonly GroupedTableGroup[] = [
+const groups: readonly SexyTableGroup[] = [
   {
     id: "customer-id",
     label: "Customer requests",
-    icon: createElement(GroupedTableStatusIcon, {
+    icon: createElement(SexyTableStatusIcon, {
       status: "todo",
       "aria-label": "Backlog status",
     }),
@@ -47,14 +47,14 @@ const groups: readonly GroupedTableGroup[] = [
     id: "done-id",
     label: "Completed work",
     defaultOpen: false,
-    icon: createElement(GroupedTableStatusIcon, { status: "done" }),
+    icon: createElement(SexyTableStatusIcon, { status: "done" }),
     issues: [{ id: "closed", title: "Starts collapsed" }],
   },
 ];
 
 function App() {
   const [view, setView] = useState<View>("requests");
-  const [theme, setTheme] = useState<GroupedTableTheme>("dark");
+  const [theme, setTheme] = useState<SexyTableTheme>("dark");
   const [mounted, setMounted] = useState(true);
   const [animated, setAnimated] = useState(true);
   const [rtl, setRtl] = useState(false);
@@ -92,7 +92,7 @@ function App() {
         dir={rtl ? "rtl" : "ltr"}
       >
         {mounted && (
-          <GroupedTable
+          <SexyTable
             ref={ref}
             dir={rtl ? "rtl" : "ltr"}
             groups={minimal ? [] : groups}

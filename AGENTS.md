@@ -11,3 +11,5 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 The user requires a faithful recreation of the Kobra grouped table, including its animations. Treat the live reference as the target: preserve its responsive columns, staggered 460ms glides, avatar fans, label enter/exit motion, and Base UI collapse behavior. Keep the source demo's add and view-options actions as no-ops; do not invent extra menus or forms. Verify motion as well as settled screenshots before claiming fidelity.
 
 The user requires an exportable TypeScript React library with clean code. Keep package exports, types, scoped styles, inline icons, and caller-owned data independent from the demo. Preserve the observed layout and motion when changing packaging. Prove the packed package in a separate consuming application, not just through source imports.
+
+The project is branded Sexy Table. The GitHub repo is `aaarnv/sexy-table`, the package is `@aaarnv/sexy-table`, and the component and model types use the `SexyTable` prefix. Preserve the reference attribution and existing styling variables.

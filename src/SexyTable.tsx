@@ -10,13 +10,13 @@ import type { IconName } from "./internal/Icon";
 import { useLayoutGlide } from "./internal/useLayoutGlide";
 import { useTableResize } from "./internal/useTableResize";
 import type {
-  GroupedTableGroup,
-  GroupedTableIssue,
-  GroupedTableProps,
-  GroupedTablePullRequestState,
+  SexyTableGroup,
+  SexyTableIssue,
+  SexyTableProps,
+  SexyTablePullRequestState,
 } from "./types";
 
-const pullIcons: Record<GroupedTablePullRequestState, IconName> = {
+const pullIcons: Record<SexyTablePullRequestState, IconName> = {
   open: "git-pull-request",
   draft: "git-pull-request-draft",
   closed: "git-pull-request-closed",
@@ -33,7 +33,7 @@ function initials(name: string) {
     .join("");
 }
 
-function IssueRow({ issue }: { readonly issue: GroupedTableIssue }) {
+function IssueRow({ issue }: { readonly issue: SexyTableIssue }) {
   const assignees = issue.assignees ?? [];
   const priority = issue.priority ?? "none";
   return (
@@ -169,8 +169,8 @@ function ColumnHeading({
 }
 
 interface GroupProps {
-  readonly group: GroupedTableGroup;
-  readonly onAdd: GroupedTableProps["onAdd"];
+  readonly group: SexyTableGroup;
+  readonly onAdd: SexyTableProps["onAdd"];
   readonly showColumns: boolean;
   readonly portalContainer: RefObject<HTMLDivElement | null>;
 }
@@ -264,8 +264,8 @@ function Group({ group, onAdd, showColumns, portalContainer }: GroupProps) {
   );
 }
 
-export const GroupedTable = forwardRef<HTMLDivElement, GroupedTableProps>(
-  function GroupedTable(
+export const SexyTable = forwardRef<HTMLDivElement, SexyTableProps>(
+  function SexyTable(
     {
       groups,
       toolbar,

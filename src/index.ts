@@ -1,19 +1,19 @@
-export { GroupedTable } from "./GroupedTable";
-export { GroupedTableStatusIcon } from "./GroupedTableStatusIcon";
-export type { GroupedTableStatusIconProps } from "./GroupedTableStatusIcon";
+export { SexyTable } from "./SexyTable";
+export { SexyTableStatusIcon } from "./SexyTableStatusIcon";
+export type { SexyTableStatusIconProps } from "./SexyTableStatusIcon";
 export { SlidingTabs } from "./SlidingTabs";
 export type {
-  GroupedTableAssignee,
-  GroupedTableGroup,
-  GroupedTableIssue,
-  GroupedTableLabel,
-  GroupedTablePriority,
-  GroupedTableProps,
-  GroupedTablePullRequest,
-  GroupedTablePullRequestState,
-  GroupedTableStatus,
-  GroupedTableStyle,
-  GroupedTableTheme,
+  SexyTableAssignee,
+  SexyTableGroup,
+  SexyTableIssue,
+  SexyTableLabel,
+  SexyTablePriority,
+  SexyTableProps,
+  SexyTablePullRequest,
+  SexyTablePullRequestState,
+  SexyTableStatus,
+  SexyTableStyle,
+  SexyTableTheme,
   SlidingTab,
   SlidingTabsProps,
 } from "./types";

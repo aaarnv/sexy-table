@@ -3,7 +3,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { execFileSync } from "node:child_process";
 
-const directory = await mkdtemp(join(tmpdir(), "grouped-table-consumer-"));
+const directory = await mkdtemp(join(tmpdir(), "sexy-table-consumer-"));
 try {
   const archives = join(directory, "package");
   await mkdir(archives);

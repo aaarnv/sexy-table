@@ -85,3 +85,7 @@ Browser verification used the installed archive in another application under `/a
 `docs/library-motion-samples.json` contains 18 real computed-style samples during the installed package's 624 → 640px expansion. Secondary avatar opacity progresses from zero through intermediate values to one, scale settles at one, translation becomes `none`, and `data-gliding` clears. The reference durations and staggering listed above remain unchanged. OS-level reduced-motion preference changes were not exercised in this session.
 
 All checks passed: strict type checking, typed ESLint, Prettier, library/demo builds, four package checks, four existing Sites checks, and both independent consumer builds and SSR checks. `docs/library-consumer.png` shows the packed package running in its independent production consumer.
+
+## Sexy Table rename — October 5, 2026
+
+The GitHub repo is now `aaarnv/sexy-table`, the package is `@aaarnv/sexy-table` v0.2.0, and the component and model types use the `SexyTable` prefix. The demo title and header read “Sexy Table”; all 13 issues remain present. `docs/sexy-table-preview.png` records the updated branding. Strict TypeScript, lint, library/demo builds, package export/SSR checks, and independent React 18/19 consumer builds and SSR passed with the renamed imports. Existing layout, animation, and styling variables are unchanged.

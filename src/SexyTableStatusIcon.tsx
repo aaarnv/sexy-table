@@ -1,16 +1,16 @@
 import type { SVGProps } from "react";
 import { Icon } from "./internal/Icon";
-import type { GroupedTableStatus } from "./types";
+import type { SexyTableStatus } from "./types";
 
-export interface GroupedTableStatusIconProps extends SVGProps<SVGSVGElement> {
-  readonly status: GroupedTableStatus;
+export interface SexyTableStatusIconProps extends SVGProps<SVGSVGElement> {
+  readonly status: SexyTableStatus;
 }
 
-export function GroupedTableStatusIcon({
+export function SexyTableStatusIcon({
   status,
   className = "",
   ...props
-}: GroupedTableStatusIconProps) {
+}: SexyTableStatusIconProps) {
   return (
     <Icon
       {...props}

@@ -1,17 +1,17 @@
-# Grouped Table
+# Sexy Table
 
 A reusable TypeScript React table based on the [Kobra grouped-table preview](https://kobra.systems/components/grouped-table). Includes responsive columns, interruptible 460ms layout glides, avatar fans, collapsible groups, scrolling, and optional resizing.
 
-![Desktop preview](docs/library-preview.png)
+![Desktop preview](docs/sexy-table-preview.png)
 
 ![Responsive transition](docs/motion-proof.gif)
 
 ## Install
 
-Download the built `aaarnv-grouped-table-0.1.0.tgz` archive from the [v0.1.0 release](https://github.com/aaarnv/kobra-grouped-table/releases/tag/v0.1.0) and install it in your React app:
+Download the built `aaarnv-sexy-table-0.2.0.tgz` archive from the [v0.2.0 release](https://github.com/aaarnv/sexy-table/releases/tag/v0.2.0) and install it in your React app:
 
 ```sh
-npm install ./aaarnv-grouped-table-0.1.0.tgz
+npm install ./aaarnv-sexy-table-0.2.0.tgz
 ```
 
 The package is not published to the npm registry. To build an archive from this repository, run `npm ci` followed by `npm pack`. React and React DOM 18.3 or 19 are peer dependencies. Base UI is installed automatically.
@@ -19,15 +19,15 @@ The package is not published to the npm registry. To build an archive from this 
 ## Use
 
 ```tsx
-import { GroupedTable, GroupedTableStatusIcon } from "@aaarnv/grouped-table";
-import type { GroupedTableGroup } from "@aaarnv/grouped-table";
-import "@aaarnv/grouped-table/styles.css";
+import { SexyTable, SexyTableStatusIcon } from "@aaarnv/sexy-table";
+import type { SexyTableGroup } from "@aaarnv/sexy-table";
+import "@aaarnv/sexy-table/styles.css";
 
-const groups: readonly GroupedTableGroup[] = [
+const groups: readonly SexyTableGroup[] = [
   {
     id: "backlog",
     label: "Backlog",
-    icon: <GroupedTableStatusIcon status="todo" />,
+    icon: <SexyTableStatusIcon status="todo" />,
     issues: [
       {
         id: "issue-1",
@@ -47,7 +47,7 @@ const groups: readonly GroupedTableGroup[] = [
 
 export function Issues() {
   return (
-    <GroupedTable
+    <SexyTable
       groups={groups}
       theme="dark"
       onAdd={(group) => console.log(group.id)}
@@ -58,7 +58,7 @@ export function Issues() {
 
 Group and issue IDs must be stable and unique within their respective lists. Labels are arbitrary. An issue only requires `id` and `title`; every other field is optional. Missing or failed avatar images show initials. Groups start expanded unless `defaultOpen` is false. To reset a group's initial open state, give it a new ID.
 
-`GroupedTable` forwards its root div ref and accepts native div props, including event handlers and ARIA attributes. `onAdd` receives the group object. Without a handler, the add button is a no-op. `toolbar` accepts your own React content.
+`SexyTable` forwards its root div ref and accepts native div props, including event handlers and ARIA attributes. `onAdd` receives the group object. Without a handler, the add button is a no-op. `toolbar` accepts your own React content.
 
 | Prop                        | Default  | Behavior                                            |
 | --------------------------- | -------- | --------------------------------------------------- |
@@ -78,8 +78,8 @@ The library inherits your font and includes no font files or avatar photos. The 
 
 ```tsx
 import { useState } from "react";
-import { GroupedTable, SlidingTabs } from "@aaarnv/grouped-table";
-import "@aaarnv/grouped-table/styles.css";
+import { SexyTable, SlidingTabs } from "@aaarnv/sexy-table";
+import "@aaarnv/sexy-table/styles.css";
 
 const views = [
   { value: "overview", label: "Overview" },
@@ -90,7 +90,7 @@ const views = [
 export function Project() {
   const [view, setView] = useState("issues");
   return (
-    <GroupedTable
+    <SexyTable
       groups={[]}
       toolbar={
         <SlidingTabs
@@ -112,7 +112,7 @@ export function Project() {
 Classes and theme variables use the `kgt-` prefix. Styles are scoped to the library's elements. Override the variables on a component with a class or typed `style`:
 
 ```tsx
-<GroupedTable
+<SexyTable
   groups={groups}
   style={{ "--kgt-card": "#18181b", "--kgt-success": "#69cda1" }}
 />

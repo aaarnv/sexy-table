@@ -10,7 +10,7 @@ const require = createRequire(import.meta.url);
 const cjs = require("../dist/lib/index.cjs");
 
 test("ESM and CommonJS expose the same components", () => {
-  const names = ["GroupedTable", "GroupedTableStatusIcon", "SlidingTabs"];
+  const names = ["SexyTable", "SexyTableStatusIcon", "SlidingTabs"];
   assert.deepEqual(Object.keys(esm).sort(), names.sort());
   assert.deepEqual(Object.keys(cjs).sort(), names.sort());
 });
@@ -21,7 +21,7 @@ for (const [format, library] of Object.entries({ esm, cjs })) {
       {
         id: "a-custom-id",
         label: "Customer requests",
-        icon: createElement(library.GroupedTableStatusIcon, { status: "todo" }),
+        icon: createElement(library.SexyTableStatusIcon, { status: "todo" }),
         issues: [
           { id: "request-1", title: "A minimal issue" },
           {
@@ -38,7 +38,7 @@ for (const [format, library] of Object.entries({ esm, cjs })) {
       },
     ];
     const html = renderToString(
-      createElement(library.GroupedTable, { groups, theme: "dark" }),
+      createElement(library.SexyTable, { groups, theme: "dark" }),
     );
     assert.match(html, /Customer requests/);
     assert.match(html, /A minimal issue/);
@@ -57,7 +57,7 @@ for (const [format, library] of Object.entries({ esm, cjs })) {
       /role="group"/,
     );
     assert.match(
-      renderToString(createElement(library.GroupedTable, { groups: [] })),
+      renderToString(createElement(library.SexyTable, { groups: [] })),
       /data-slot="grouped-table"/,
     );
   });
