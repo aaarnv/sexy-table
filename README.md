@@ -37,14 +37,7 @@ export function Issues() {
 
 Supply your own data, toolbar, font, and avatar URLs. Import the CSS once in your application. [API documentation](docs/api.md) covers all fields, callbacks, themes, sizing, and the `SlidingTabs` toolbar.
 
-![Sexy Table](docs/sexy-table-preview.png)
-
-<details>
-<summary>Watch the responsive animation</summary>
-
-![Responsive transition](docs/motion-proof.gif)
-
-</details>
+![Sexy Table responsive animation](docs/motion-proof.gif)
 
 ## Develop
 
